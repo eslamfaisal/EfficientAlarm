@@ -1,4 +1,4 @@
-package com.eslam.efficientalarm
+package com.eslam.efficientalarm.model
 
 import android.os.Parcelable
 import androidx.annotation.Keep

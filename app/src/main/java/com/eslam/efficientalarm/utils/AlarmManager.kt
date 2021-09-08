@@ -1,4 +1,4 @@
-package com.eslam.efficientalarm
+package com.eslam.efficientalarm.utils
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -9,7 +9,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
-import com.eslam.efficientalarm.Constants.alarm_id
+import com.eslam.efficientalarm.model.AlarmData
+import com.eslam.efficientalarm.services.AlarmsReceiver
+import com.eslam.efficientalarm.utils.Constants.alarm_id
 import java.util.*
 import java.util.concurrent.TimeUnit
 

@@ -1,13 +1,13 @@
-package com.eslam.efficientalarm
+package com.eslam.efficientalarm.services
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.eslam.efficientalarm.Constants.BOOT_COMPLETED
-import com.eslam.efficientalarm.Constants.FIRE_ALARM
-import com.eslam.efficientalarm.Constants.OPEN_TYPE
-import com.eslam.efficientalarm.Constants.REFRESH
-import com.eslam.efficientalarm.Constants.alarm_id
+import com.eslam.efficientalarm.utils.Constants.BOOT_COMPLETED
+import com.eslam.efficientalarm.utils.Constants.FIRE_ALARM
+import com.eslam.efficientalarm.utils.Constants.OPEN_TYPE
+import com.eslam.efficientalarm.utils.Constants.REFRESH
+import com.eslam.efficientalarm.utils.Constants.alarm_id
 
 class AlarmsReceiver : BroadcastReceiver() {
 

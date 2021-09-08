@@ -1,4 +1,4 @@
-package com.eslam.efficientalarm
+package com.eslam.efficientalarm.utils
 
 object Constants {
     const val alarm_id = "alarm_id"

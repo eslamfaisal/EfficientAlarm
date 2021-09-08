@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EfficientAlarm">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,17 +27,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AlarmActivity">
+        <activity android:name=".ui.AlarmActivity">
 
         </activity>
 
         <service
-            android:name=".AlarmsForegroundService"
+            android:name=".services.AlarmsForegroundService"
             android:enabled="true"
             android:exported="false" />
 
         <receiver
-            android:name=".AlarmsReceiver"
+            android:name=".services.AlarmsReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

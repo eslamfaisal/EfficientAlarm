@@ -1,4 +1,4 @@
-package com.eslam.efficientalarm
+package com.eslam.efficientalarm.utils
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -9,6 +9,8 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import com.eslam.efficientalarm.R
+import com.eslam.efficientalarm.ui.MainActivity
 
 object NotificationHelper {
     private var NotificationID = 1005

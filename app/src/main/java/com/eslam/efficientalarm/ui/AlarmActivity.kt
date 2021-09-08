@@ -1,14 +1,14 @@
-package com.eslam.efficientalarm
+package com.eslam.efficientalarm.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.os.PowerManager
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.eslam.efficientalarm.AlarmData
-import com.eslam.efficientalarm.Constants
-import com.eslam.efficientalarm.NotificationHelper.cancelNotification
-import com.eslam.efficientalarm.NotificationHelper.runNotification
+import com.eslam.efficientalarm.model.AlarmData
+import com.eslam.efficientalarm.utils.Constants
+import com.eslam.efficientalarm.utils.NotificationHelper.cancelNotification
+import com.eslam.efficientalarm.utils.NotificationHelper.runNotification
 import com.eslam.efficientalarm.R
 import kotlinx.android.synthetic.main.activity_alarm.*
 import java.util.*
