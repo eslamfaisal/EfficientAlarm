@@ -9,14 +9,12 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.IBinder
-import android.text.format.Time
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationCompat.PRIORITY_MIN
 import com.eslam.efficientalarm.Constants.ALARM_DATA
 import com.eslam.efficientalarm.Constants.OPEN_TYPE
 import com.eslam.efficientalarm.Constants.REFRESH
-import com.eslam.efficientalarm.Constants.alarm_id
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -24,7 +22,6 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 
 class AlarmsForegroundService : Service() {
@@ -48,7 +45,7 @@ class AlarmsForegroundService : Service() {
         if (intent!!.getStringExtra(OPEN_TYPE) == REFRESH) {
             refreshAlarms()
         } else {
-            startAlarm(intent.getIntExtra(alarm_id, -1))
+            startAlarm()
         }
 
 
@@ -58,7 +55,7 @@ class AlarmsForegroundService : Service() {
     private fun refreshAlarms() {
         CoroutineScope(IO).launch {
             CoroutineScope(Main).launch {
-
+                scheduleAlarm(this@AlarmsForegroundService, getSavedAlarm())
             }
             delay(5000)
             stopForeground(true)
@@ -66,46 +63,25 @@ class AlarmsForegroundService : Service() {
         }
     }
 
-    private fun updateAlarm(time: Long, alarm_id: Int) {
+    fun getSavedAlarm(): AlarmData {
+        val sharedPref = getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
+        )
 
-        var newTime = time
-
-
-        newTime + TimeUnit.DAYS.toMillis(1)
-
-        CoroutineScope(IO).launch {
-
-            delay(500)
-        }
-
+        return Gson().fromJson(sharedPref.getString("alarm_details", ""), AlarmData::class.java)
     }
 
-    fun getTimeMillsFromCalender(time: Time): Calendar {
-        val calender = Calendar.getInstance()
-        calender[Calendar.HOUR_OF_DAY] = time.hour
-        calender[Calendar.MINUTE] = time.minute
-        calender[Calendar.SECOND] = 0
-        calender[Calendar.MILLISECOND] = 0
-
-        return calender
-    }
-
-    private fun startAlarm(alarmId: Int) {
+    private fun startAlarm() {
 
         CoroutineScope(Main).launch {
 
+            // get saved alarm from shared preference
+            val alarm: AlarmData = getSavedAlarm()
 
-            val sharedPref = getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE
-            )
+            // schedule the alarm for next day if repeated
+            if (alarm.repeated)
+                scheduleAlarm(this@AlarmsForegroundService, alarm)
 
-            var alarm: AlarmData =
-                Gson().fromJson(sharedPref.getString("alarm_details",""), AlarmData::class.java)
-
-            updateAlarm(
-                alarm_id = alarmId,
-                time = alarm.time
-            )
             val ringer = Intent(applicationContext, AlarmActivity::class.java)
             ringer.putExtra(ALARM_DATA, alarm)
             ringer.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
