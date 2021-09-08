@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EfficientAlarm</string>
+    <string name="preference_file_key">alarm_pref</string>
+</resources>
