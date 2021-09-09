@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
     }
 
-    var hour: Int = 0
-    var minute: Int = 0
-    var year: Int = 0
-    var month: Int = 0
-    var day: Int = 0
+    var hour: Int = -1
+    var minute: Int = -1
+    var year: Int = -1
+    var month: Int = -1
+    var day: Int = -1
 
     @RequiresApi(Build.VERSION_CODES.M)
     val resultLauncher =
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAlarm() {
 
-        if (hour == 0 || minute == 0 || year == 0 || month == 0 || day == 0) {
+        if (hour == -1 || minute == -1 || year == -1 || month == -1 || day == -1) {
             Toast.makeText(this, "pick date and time yalaa", Toast.LENGTH_LONG).show()
             return
         }
