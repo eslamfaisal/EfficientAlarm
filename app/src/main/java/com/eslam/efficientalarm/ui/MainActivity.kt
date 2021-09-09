@@ -119,9 +119,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 alert.setNegativeButton("Cancel") { dialog: DialogInterface, _: Int -> finish() }
                 alert.show()
-            } else {
-                requestBatteryOptimizationPermission()
             }
+            requestBatteryOptimizationPermission()
         }
 
     }
