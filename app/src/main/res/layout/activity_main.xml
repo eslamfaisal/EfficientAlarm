@@ -6,17 +6,21 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+
     <Button
+        android:id="@+id/dateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showDatePickerDialog"
+        android:text="Select date" />
+
+    <Button
+        android:id="@+id/timeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showTimePickerDialog"
         android:text="Select time" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showDatePickerDialog"
-        android:text="Select date" />
 
     <CheckBox
         android:id="@+id/isRepeatedCheckBox"

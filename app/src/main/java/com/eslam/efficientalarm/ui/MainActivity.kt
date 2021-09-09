@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 this@MainActivity.day = day
                 this@MainActivity.month = month
                 this@MainActivity.year = year
+                dateButton.text = "${year}/${month}/${day}"
             }
         }).show(supportFragmentManager, "datePicker")
     }
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             override fun pickedTime(hoursOfDay: Int, minutes: Int) {
                 this@MainActivity.hour = hoursOfDay
                 this@MainActivity.minute = minutes
+                timeButton.text = "${hoursOfDay} : ${minutes}"
             }
         }).show(supportFragmentManager, "timePicker")
     }
